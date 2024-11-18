@@ -1,0 +1,8 @@
+- Add Android 15 Easter Egg Landroid
+- Update App logo, use Android 15 Easter Egg logo
+- Update Android 14 Easter Egg name
+- Update EasterEggs analog clock widget click behavior
+- Update SplashScreen Icon
+- Fix missing Android JellyBean in the timeline
+- Update translations
+- Upgrade project dependencies

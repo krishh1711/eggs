@@ -1,0 +1,18 @@
+plugins {
+    id("easter.egg.library")
+}
+
+android {
+	sourceSets {
+		main {
+			res.srcDirs = ['res']
+			java.srcDirs = ['src']
+			manifest.srcFile 'AndroidManifest.xml'
+		}
+	}
+}
+
+dependencies {
+    implementation(libs.androidx.appcompat)
+}
+

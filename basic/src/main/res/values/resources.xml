@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AnalogClock">
+        <attr name="dial" format="reference" />
+        <attr name="hand_hour" format="reference" />
+        <attr name="hand_minute" format="reference" />
+    </declare-styleable>
+
+    <attr name="supportAdaptiveIcon" format="boolean" />
+
+    <string name="title_open_with">Open with</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easter Eggs</string>
+    <string name="title_open_with">Apri con</string>
+    <string name="char_separator">/</string>
+    <string name="char_en_dash">-</string>
+    <string name="label_github">Source code</string>
+    <string name="label_translation">Traduzione</string>
+    <string name="label_beta">Ottieni versione Beta</string>
+    <string name="label_timeline">Cronologia</string>
+    <string name="label_privacy_policy">Privacy</string>
+    <string name="label_license">Licenza</string>
+    <string name="label_feedback">Feedback</string>
+    <string name="label_star">Vota l\'app</string>
+    <string name="message_trypophobia_warning">Questo è un avvertimento per coloro che soffrono di &lt;b&gt;Tripofobia&lt;/b&gt;. Alcune immagini possono causare disagio. Vuoi continuare?</string>
+    <string name="label_settings">Impostazioni</string>
+    <string name="label_project_desc">Il progetto contiene l\'intero codice del sistema di Easter Eggs con lo scopo di organizzare e di essere compatibile con diverse versioni del sistema. Ciò garantisce che la maggior parte dei dispositivi possa sperimentare versioni diverse di Easter Eggs senza richiedere modifiche eccessive al codice del sistema. Alcune versioni utilizzano nuove funzionalità del sistema, mentre le versioni precedenti possono accedere solo ad alcune delle funzioni.</string>
+    <string name="pref_title_icon_shape_override">Forma dell\'icona</string>
+    <string name="pref_title_language">Lingua</string>
+    <string name="pref_title_language_more">Altro</string>
+    <string name="pref_title_theme">Tema</string>
+    <string name="pref_title_dynamic_color">Colore dinamico</string>
+    <string name="pref_title_icon_visual_effects">Effetti visivi dell\'icona</string>
+    <string name="summary_system_default">Predefinito</string>
+    <string name="summary_theme_dark_mode">Scuro</string>
+    <string name="summary_theme_light_mode">Chiaro</string>
+    <string name="label_add_shortcut">Collegamento</string>
+    <string name="label_donate">Dona</string>
+    <string name="preference_on">Attivato</string>
+    <string name="preference_off">Disattivato</string>
+    <string name="toast_shortcut_added">Collegamento aggiunto</string>
+    <string name="app_widget_description">Questo è l\'orologio analogico di Easter Eggs</string>
+    <string name="action_agree">Accetta</string>
+    <string name="summary_browse_privacy_policy">Leggi e accetta la nostra Informativa sulla privacy per continuare.</string>
+    <string name="label_welcome">Benvenuto nei Cataloghi di Easter Egg🎉🎉🎉</string>
+    <string name="label_share">Condividi</string>
+    <string name="label_search_hint">Cerca…</string>
+    <string name="label_component_manager">Gestione Componenti</string>
+    <string name="pref_more_settings">Maggiori Impostazioni</string>
+    <string name="pref_retain_recent_egg_tasks">Conserva le attività recenti degli Eggs</string>
+    <string name="pref_summary_retain_recent_egg_tasks">Conserva le attività Egg nella schermata Recenti, massimo 5 (non valido per la modalità incorporata di attività)</string>
+    <string name="label_about">Informazioni</string>
+</resources>

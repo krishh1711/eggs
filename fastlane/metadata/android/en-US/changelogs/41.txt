@@ -1,0 +1,4 @@
+- Fix Timeline BottomModalSheet crash
+- Fix JellyBean and IceCreamSandwich image density
+- Upgrade project dependencies
+- Known issue fixes

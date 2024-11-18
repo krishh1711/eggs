@@ -1,0 +1,22 @@
+plugins {
+    id("easter.egg.library")
+}
+
+android {
+    sourceSets {
+        main {
+            res.srcDirs = ['res']
+            java.srcDirs = ['src']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
+
+dependencies {
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.recyclerview)
+
+    implementation(project(":jvm-basic"))
+    implementation(libs.squareup.okio)
+}

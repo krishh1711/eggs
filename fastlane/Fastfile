@@ -1,0 +1,246 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+require "uri"
+require "net/http"
+
+def send_telegram_photo(token = ENV["TELEGRAM_TOKEN"], chat_id = ENV["TELEGRAM_TO"], photo = nil, caption)
+  if token == nil
+    puts "⚠️ token is nil, skip!"
+    return
+  end
+  if chat_id == nil
+    puts "⚠️ chat_id is nil, skip!"
+    return
+  end
+
+  if photo == nil
+    photo = "https://raw.githubusercontent.com/hushenghao/AndroidEasterEggs/main/fastlane/metadata/android/en-US/images/featureGraphic.png"
+  end
+
+  # https://core.telegram.org/bots/api#sendphoto
+  url = URI("https://api.telegram.org/bot#{token}/sendPhoto")
+  https = Net::HTTP.new(url.host, url.port)
+  https.use_ssl = true
+
+  request = Net::HTTP::Post.new(url)
+  form_data = [
+    ["chat_id", chat_id],
+    ["parse_mode", "Markdown"],
+    ["caption", caption],
+    ["photo", photo],
+  ]
+  request.set_form form_data, "multipart/form-data"
+  response = https.request(request)
+  puts response.read_body
+end
+
+def is_test_ref(ref_name)
+  return ref_name =~ /v?(\d|.)+-([a-z]+)\d*/
+end
+
+default_platform(:android)
+
+platform :android do
+  desc "Publish to Pgyer"
+  lane :publish_to_pgyer do
+    if ENV["PGYER_API_KEY"].nil?
+      puts "⚠️ PGYER_API_KEY env not found, skip!"
+      next
+    end
+
+    gradle(tasks: ["clean", "app:assembleFossAlphaRelease"])
+
+    changelogs_zh = (File.read(Dir["./metadata/android/zh-CN/changelogs/*.txt"][-1]) rescue "No changelog provided")
+    changelogs_en = (File.read(Dir["./metadata/android/en-US/changelogs/*.txt"][-1]) rescue "No changelog provided")
+    # https://www.pgyer.com/doc/view/fastlane
+    pgyer_answer = pgyer(
+      api_key: ENV["PGYER_API_KEY"],
+      update_description: changelogs_zh,
+    )
+
+    # Send to Telegram
+    pgyer_build_key = pgyer_answer["buildKey"]
+    commit_hash = last_git_commit[:commit_hash]
+    message = <<~EOF
+      *Easter Eggs*
+
+      🚀 New Alpha Version ! 🎉
+
+      *🧑‍💻 Build:*
+
+      - Commit: [#{commit_hash}](https://github.com/hushenghao/AndroidEasterEggs/commit/#{commit_hash})
+      - Build Key: [#{pgyer_build_key}](https://www.pgyer.com/#{pgyer_build_key})
+
+      *🔗 Links:*
+
+      - ⬇️ [Download](https://www.pgyer.com/#{pgyer_build_key})
+      - 🐙 [Source Code](https://github.com/hushenghao/AndroidEasterEggs)
+
+      *❇️ Changelogs:*
+
+      #{changelogs_en}
+    EOF
+    send_telegram_photo(message)
+  end
+
+  desc "Deploy to Github release"
+  lane :release do |options|
+    if ENV["GITHUB_TOKEN"].nil? && ENV["GITHUB_API_TOKEN"].nil?
+      puts "⚠️ GITHUB_TOKEN env and GITHUB_API_TOKEN env not found, skip!"
+      next
+    end
+
+    ref_name = options[:ref_name]
+
+    is_test_ref = is_test_ref(ref_name)
+    if is_test_ref
+      gradle(tasks: ["clean", "app:assembleFossBetaRelease"])
+    else
+      gradle(tasks: ["clean", "app:assembleFossProductRelease"])
+    end
+
+    if ref_name.nil?
+      puts "⚠️ github.ref_name not found, skip!"
+      next
+    end
+
+    # https://docs.fastlane.tools/actions/gradle/
+    # Lane Variables
+    apk_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+    mapping_path = lane_context[SharedValues::GRADLE_MAPPING_TXT_OUTPUT_PATH]
+    if apk_path.nil? || !File.exist?(apk_path) || !File.file?(apk_path)
+      puts "⚠️ GRADLE_APK_OUTPUT_PATH not found, skip!"
+      next
+    end
+
+    # zip mapping.txt
+    mapping_dir = File::dirname(mapping_path)
+    mapping_zip = File::join(mapping_dir, "mapping.zip")
+    Dir.chdir(mapping_dir) do
+      sh("zip", "mapping.zip", File::basename(mapping_path))
+    end
+    missing_rules = File::join(mapping_dir, "missing_rules.txt")
+    if File::exist?(missing_rules)
+      sh("cat", missing_rules)
+    end
+
+    changelogs = (File.read(Dir["./metadata/android/en-US/changelogs/*.txt"][-1]) rescue "No changelog provided")
+    # https://docs.fastlane.tools/actions/set_github_release/
+    github_release = set_github_release(
+      repository_name: "hushenghao/AndroidEasterEggs",
+      api_bearer: ENV["GITHUB_TOKEN"],
+      is_prerelease: is_test_ref,
+      name: ref_name,
+      tag_name: ref_name,
+      description: changelogs,
+      upload_assets: [apk_path, mapping_zip],
+    )
+
+    commit_hash = last_git_commit[:commit_hash]
+    # Send to Telegram
+    message = <<~EOF
+      *Easter Eggs*
+
+      🚀 New Version Released ! 🎉
+
+      *🧑‍💻 Build:*
+
+      - Version: #{ref_name}
+      - Commit: [#{commit_hash}](https://github.com/hushenghao/AndroidEasterEggs/commit/#{commit_hash})
+
+      *🔗 Links:*
+
+      - ⬇️ [Download](#{github_release["html_url"]})
+      - 🐙 [Source Code](https://github.com/hushenghao/AndroidEasterEggs)
+
+      *❇️ Changelogs:*
+
+      #{changelogs}
+    EOF
+    send_telegram_photo(message)
+  end
+
+  desc "Deploy to Google Play"
+  lane :deploy do |options|
+    if ENV["JSON_KEY_FILE"].nil?
+      puts "⚠️ JSON_KEY_FILE env not found, skip!"
+      next
+    end
+
+    # https://docs.fastlane.tools/actions/upload_to_play_store/
+    # skip_upload_aab           Whether to skip uploading AAB	                                false
+    # skip_upload_metadata      Whether to skip uploading metadata, changelogs not included	    false
+    # skip_upload_images        Whether to skip uploading images, screenshots not included	    false
+    # skip_upload_screenshots   Whether to skip uploading SCREENSHOTS	                        false
+    # skip_upload_changelogs    Whether to skip uploading changelogs	                        false
+    # sync_image_upload         Whether to use sha256 comparison to skip upload of images and   false
+    #                           screenshots that are already in Play Store
+    # track                     The track of the application to use. The default available      production
+    #                           tracks are: production, beta, alpha, internal
+
+    ref_name = options[:ref_name]
+    if is_test_ref(ref_name)
+      # Upload new beta version
+      gradle(task: "clean app:bundleMarketBetaRelease")
+      upload_to_play_store(
+        skip_upload_metadata: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+        track: "beta",
+      )
+      next
+    end
+
+    case options[:mode]
+    when "metadata"
+      # Upload metadata
+      upload_to_play_store(
+        skip_upload_aab: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+        skip_upload_changelogs: true,
+      )
+    when "images"
+      # Upload images and screenshots
+
+      # Device art generator
+      #   https://developer.android.google.cn/distribute/marketing-tools/device-art-generator
+      # Screenshot Devices:
+      #   phone:      Pixel 6                     1080x2400
+      #   sevenInch:  7.6" Foldable main screen   1768x2208
+      #   tenInch:    Nexus 9                     1536x2048
+      # Style:
+      #   [ ] Shadow  [x] Screen Glare
+      upload_to_play_store(
+        skip_upload_aab: true,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        sync_image_upload: true,
+      )
+    when "full"
+      # Upload All
+      gradle(task: "clean app:bundleMarketProductRelease")
+      upload_to_play_store
+    else
+      # Upload new version
+      gradle(task: "clean app:bundleMarketProductRelease")
+      upload_to_play_store(
+        skip_upload_metadata: true,
+        sync_image_upload: true,
+      )
+    end
+  end
+end

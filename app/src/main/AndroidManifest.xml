@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dede="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    dede:once="🍃">
+
+    <uses-permission
+        android:name="com.android.launcher.permission.INSTALL_SHORTCUT"
+        android:maxSdkVersion="26" />
+
+    <application
+        android:name=".EasterEggsApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/backup_rules"
+        android:enableOnBackInvokedCallback="true"
+        android:fullBackupContent="@xml/backup_config_old"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EasterEggs"
+        tools:targetApi="tiramisu">
+
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.dede.android_eggs.startup.ReflectionInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.dede.android_eggs.startup.ApplicationInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <activity
+            android:name=".views.main.EasterEggsActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <!-- egg://easter_egg/api/26 -->
+                <data
+                    android:host="easter_egg"
+                    android:scheme="egg" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".views.placeholder.PlaceholderActivity" />
+    </application>
+
+</manifest>

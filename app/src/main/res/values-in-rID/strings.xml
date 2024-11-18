@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easter Eggs</string>
+    <string name="title_open_with">Buka dengan</string>
+    <string name="char_separator"></string>
+    <string name="char_en_dash">-</string>
+    <string name="label_translation">Terjemahan</string>
+    <string name="label_beta">Versi Beta</string>
+    <string name="label_timeline">Linimasa</string>
+    <string name="label_privacy_policy">Kebijakan Privasi</string>
+    <string name="label_license">Lisensi</string>
+    <string name="label_feedback">Masukan</string>
+    <string name="label_star">Penilaian</string>
+    <string name="message_trypophobia_warning">Ini adalah peringatan bagi pengidap &lt;b&gt;Trypophobia&lt;/b&gt; bahwa beberapa gambar mungkin menyebabkan ketidaknyamanan. Apakah Anda ingin melanjutkan?</string>
+    <string name="label_settings">Setelan</string>
+    <string name="label_project_desc">Proyek ini berisi kode lengkap Easter Egg sistem, yang bertujuan untuk mengatur dan kompatibel dengan Easter Egg sistem, untuk memastikan bahwa sebagian besar perangkat dapat mengalami versi Easter Egg yang berbeda dan tidak akan membuat terlalu banyak modifikasi pada kode Easter Egg sistem. Beberapa versi menggunakan fitur sistem baru, dan versi yang lebih rendah hanya dapat menggunakan beberapa fungsi.</string>
+    <string name="pref_title_icon_shape_override">Bentuk Ikon</string>
+    <string name="pref_title_language">Bahasa</string>
+    <string name="pref_title_language_more">Lainnya</string>
+    <string name="pref_title_theme">Tema</string>
+    <string name="pref_title_dynamic_color">Warna Dinamis (Mengikuti wallpaper)</string>
+    <string name="pref_title_icon_visual_effects">Efek Ikon</string>
+    <string name="summary_system_default">Bawaan</string>
+    <string name="summary_theme_dark_mode">Gelap</string>
+    <string name="summary_theme_light_mode">Terang</string>
+    <string name="label_add_shortcut">Pintasan</string>
+    <string name="label_donate">Donasi</string>
+    <string name="preference_on">Aktif</string>
+    <string name="preference_off">Mati</string>
+    <string name="toast_shortcut_added">Pintasan ditambahkan</string>
+    <string name="app_widget_description">Ini adalah jam analog Easter Egg</string>
+    <string name="action_agree">Setuju</string>
+    <string name="summary_browse_privacy_policy">Baca dan setujui Kebijakan Privasi kami untuk melanjutkan.</string>
+    <string name="label_welcome">Selamat datang di Katalog Easter Egg 🎉🎉🎉</string>
+    <string name="label_share">Bagikan</string>
+    <string name="label_search_hint">Temukan…</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Oeufs de Pâques</string>
+    <string name="title_open_with">Ouvrir avec le</string>
+    <string name="char_separator">/</string>
+    <string name="char_en_dash">-</string>
+    <string name="label_github">Code source</string>
+    <string name="label_translation">Traductions</string>
+    <string name="label_beta">Télécharger la bêta</string>
+    <string name="label_timeline">Chronologie de l\'OS</string>
+    <string name="label_privacy_policy">Confidentialité</string>
+    <string name="label_license">Licence</string>
+    <string name="label_feedback">Retour d\'expérience</string>
+    <string name="label_star">Évaluer l\'application</string>
+    <string name="label_contact_me">Contactez-moi</string>
+    <string name="label_email_title">E-mail</string>
+    <string name="message_trypophobia_warning">Ceci est un avertissement pour les personnes avec  &lt;b&gt;Trypophobie&lt;/b&gt; que certaines images peuvent causer un malaise. Voulez-vous continuer ?</string>
+    <string name="label_settings">Paramètres</string>
+    <string name="label_project_desc">Le projet contient le code complet du système Easter Eggs, qui vise à organiser et à être compatible avec les œufs du système, afin de garantir que la plupart des appareils peuvent expérimenter différentes versions des œufs de Pâques et n\'apporteront pas trop de modifications au code des œufs du système. Certaines versions utilisent de nouvelles fonctionnalités du système et les versions inférieures ne peuvent utiliser que certaines fonctions.</string>
+    <string name="pref_title_icon_shape_override">Forme d\'icône</string>
+    <string name="pref_title_language">Langue</string>
+    <string name="pref_title_language_more">Plus</string>
+    <string name="pref_title_theme">Thème</string>
+    <string name="pref_title_dynamic_color">Couleur Dynamique</string>
+    <string name="pref_title_icon_visual_effects">Effets visuels des icônes</string>
+    <string name="summary_system_default">Défaut</string>
+    <string name="summary_theme_dark_mode">Sombre</string>
+    <string name="summary_theme_light_mode">Lumière</string>
+    <string name="summary_theme_amoled_mode">Amoled</string>
+    <string name="label_add_shortcut">Raccourci</string>
+    <string name="label_donate">Faire un don</string>
+    <string name="preference_on">Activé</string>
+    <string name="preference_off">Désactivé</string>
+    <string name="toast_shortcut_added">Raccourci ajouté à l\'écran d\'accueil.</string>
+    <string name="app_widget_description">C\'est l\'horloge analogique des Easter Eggs</string>
+    <string name="action_agree">J\'accepte</string>
+    <string name="summary_browse_privacy_policy">Lisez et acceptez notre politique de confidentialité pour continuer.</string>
+    <string name="label_welcome">Bienvenue dans les catalogues de Easter Egg 🎉🎉🎉</string>
+    <string name="label_share">Partager</string>
+    <string name="label_search_hint">Recherche…</string>
+    <string name="label_component_manager">Gestionnaire de composants</string>
+    <string name="pref_more_settings">Plus de réglages</string>
+    <string name="pref_retain_recent_egg_tasks">Conserver les Œufs de Pâques récents</string>
+    <string name="pref_summary_retain_recent_egg_tasks">Conserver les tâches Easter Egg sur l\'écran Récents, maximum de 5 tâches conservées (non disponible pour le mode Activité intégré.)</string>
+    <string name="label_about">À propos</string>
+    <string name="label_contribute">Contribuer</string>
+</resources>

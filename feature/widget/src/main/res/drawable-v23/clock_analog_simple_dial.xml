@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:autoMirrored="false">
+
+    <item
+        android:width="380dp"
+        android:height="380dp"
+        android:drawable="@drawable/clock_analog_dial"
+        android:gravity="center" />
+
+    <item
+        android:width="200dp"
+        android:height="200dp"
+        android:drawable="@drawable/ic_platlogo_v"
+        android:gravity="center" />
+
+    <item
+        android:id="@+id/o_clock_12"
+        android:width="44dp"
+        android:height="44dp"
+        android:drawable="@drawable/ic_android_s"
+        android:gravity="top|center_horizontal"
+        android:top="10dp" />
+
+    <item
+        android:id="@+id/o_clock_1"
+        android:width="44dp"
+        android:height="48.8889dp"
+        android:drawable="@drawable/ic_android_cupcake"
+        android:gravity="top|right"
+        android:right="86dp"
+        android:top="28dp" />
+
+    <item
+        android:id="@+id/o_clock_2"
+        android:width="44dp"
+        android:height="44dp"
+        android:drawable="@drawable/ic_android_g"
+        android:gravity="top|right"
+        android:right="30dp"
+        android:top="88dp" />
+
+    <item
+        android:id="@+id/o_clock_3"
+        android:width="44dp"
+        android:height="44dp"
+        android:drawable="@drawable/ic_android_h"
+        android:gravity="center_vertical|right"
+        android:right="10dp" />
+
+    <item
+        android:id="@+id/o_clock_4"
+        android:width="44dp"
+        android:height="42dp"
+        android:bottom="90dp"
+        android:drawable="@drawable/ic_android_k"
+        android:gravity="bottom|right"
+        android:right="28dp" />
+
+    <item
+        android:id="@+id/o_clock_5"
+        android:width="46dp"
+        android:height="46dp"
+        android:bottom="30dp"
+        android:drawable="@drawable/ic_android_l"
+        android:gravity="bottom|right"
+        android:right="88dp" />
+
+    <item
+        android:id="@+id/o_clock_6"
+        android:width="46dp"
+        android:height="46dp"
+        android:bottom="10dp"
+        android:drawable="@drawable/ic_android_m"
+        android:gravity="bottom|center_horizontal" />
+
+    <item
+        android:id="@+id/o_clock_7"
+        android:width="46dp"
+        android:height="46dp"
+        android:bottom="30dp"
+        android:drawable="@drawable/ic_android_n"
+        android:gravity="bottom|left"
+        android:left="90dp" />
+
+    <item
+        android:id="@+id/o_clock_8"
+        android:width="48dp"
+        android:height="48dp"
+        android:bottom="88dp"
+        android:drawable="@drawable/ic_android_o"
+        android:gravity="bottom|left"
+        android:left="30dp" />
+
+    <item
+        android:id="@+id/o_clock_9"
+        android:width="48dp"
+        android:height="48dp"
+        android:drawable="@drawable/ic_android_p"
+        android:gravity="center_vertical|left"
+        android:left="6dp"
+        android:top="-4dp" />
+
+    <item
+        android:id="@+id/o_clock_10"
+        android:width="48dp"
+        android:height="48dp"
+        android:drawable="@drawable/ic_android_q"
+        android:gravity="top|left"
+        android:left="26dp"
+        android:top="86dp" />
+
+    <item
+        android:id="@+id/o_clock_11"
+        android:width="32dp"
+        android:height="32dp"
+        android:drawable="@drawable/ic_number11"
+        android:gravity="top|left"
+        android:left="98dp"
+        android:top="36dp" />
+
+</layer-list>

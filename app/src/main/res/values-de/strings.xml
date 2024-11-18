@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easter Eggs</string>
+    <string name="title_open_with">Öffnen mit</string>
+    <string name="char_separator">/</string>
+    <string name="char_en_dash">-</string>
+    <string name="label_github">Quellcode</string>
+    <string name="label_translation">Übersetzen</string>
+    <string name="label_beta">Laden Sie die Beta-Version herunter</string>
+    <string name="label_timeline">Zeitleiste</string>
+    <string name="label_privacy_policy">Privatsphäre &amp; Datenschutz</string>
+    <string name="label_license">Lizenz</string>
+    <string name="label_feedback">Feedback geben</string>
+    <string name="label_star">Bewerten</string>
+    <string name="label_contact_me">Kontakt aufnehmen</string>
+    <string name="label_email_title">E-mail</string>
+    <string name="message_trypophobia_warning">Dies ist eine Warnung für Personen mit einer &lt;b&gt;Trypophobie&lt;/b&gt; , dass einige Bilder Unbehagen verursachen können. Möchtest du fortfahren?</string>
+    <string name="label_settings">Einstellungen</string>
+    <string name="label_project_desc">Das Projekt enthält den vollständigen Code der Android-Easter Eggs. Ziel ist eine Kompatibilität aller Easter Eggs herzustellen, um sicherzustellen, dass die meisten Geräte verschiedene Versionen von Easter Eggs ausführen können, Ziel ist es außerdem, nicht zu viele Änderungen am Easter Egg Code vornehmen. Einige Easter Eggs nutzen funktionen von neueren Android-Versionen und können daher evtl. nicht auf allen Android-Versionen korrekt ausgeführt werden.</string>
+    <string name="pref_title_icon_shape_override">Symbolform</string>
+    <string name="pref_title_language">Sprache</string>
+    <string name="pref_title_language_more">Mehr</string>
+    <string name="pref_title_theme">Thema und Aussehen</string>
+    <string name="pref_title_dynamic_color">Dynamische Farbe</string>
+    <string name="pref_title_icon_visual_effects">Visuelle Symboleffekte</string>
+    <string name="summary_system_default">Systemstandard</string>
+    <string name="summary_theme_dark_mode">Dunkel</string>
+    <string name="summary_theme_light_mode">Hell</string>
+    <string name="summary_theme_amoled_mode">Amoled</string>
+    <string name="label_add_shortcut">Verknüpfung</string>
+    <string name="label_donate">Spenden sie an das Projekt</string>
+    <string name="preference_on">An</string>
+    <string name="preference_off">Aus</string>
+    <string name="toast_shortcut_added">Verknüpfung wurde zum Startbildschirm hinzugefügt</string>
+    <string name="app_widget_description">Eine analoge Easter Egg-Uhr</string>
+    <string name="action_agree">Zustimmen</string>
+    <string name="summary_browse_privacy_policy">Lesen Sie unsere Datenschutzrichtlinie und stimmen Sie ihr zu, um fortzufahren.</string>
+    <string name="label_welcome">Willkommen bei Easter Egg-Katalogen 🎉🎉🎉</string>
+    <string name="label_share">Teilen und Versenden</string>
+    <string name="label_search_hint">Suchen…</string>
+    <string name="label_component_manager">Easter-Egg-Komponentenmanager</string>
+    <string name="pref_more_settings">Mehr Einstellungen</string>
+    <string name="pref_retain_recent_egg_tasks">Behalten Sie aktuelle Easter Egg-Aufgaben bei</string>
+    <string name="pref_summary_retain_recent_egg_tasks">Behalten Sie Easter Egg-Aufgaben auf dem Bildschirm „Letzte“ bei, maximal 5 (ungültig für den eingebetteten Aktivitätsmodus)</string>
+    <string name="label_about">Über</string>
+    <string name="label_contribute">Mithelfen</string>
+</resources>

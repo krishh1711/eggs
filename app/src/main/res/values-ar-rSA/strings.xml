@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">بيض عيد الفصح</string>
+    <string name="title_open_with">فتح باستخدام</string>
+    <string name="char_separator">/</string>
+    <string name="char_en_dash">-</string>
+    <string name="label_github">كود المصدر</string>
+    <string name="label_translation">الترجمات</string>
+    <string name="label_beta">تنزيل النسخة التجريبية</string>
+    <string name="label_timeline">الترخيص</string>
+    <string name="label_privacy_policy">سياسة الخصوصية</string>
+    <string name="label_license">الترخيص</string>
+    <string name="label_feedback">تقديم ملاحظات</string>
+    <string name="label_star">تقييم التطبيق</string>
+    <string name="label_contact_me">تواصل معي</string>
+    <string name="label_email_title">البريد الإلكتروني</string>
+    <string name="message_trypophobia_warning">وهذا تحذير لأولئك الذين يعانون من &lt;b&gt;رهاب النخاريب&lt;/b&gt; من أن بعض الصور قد تسبب عدم الراحة. هل تريد الاستمرار؟</string>
+    <string name="label_settings">إعدادات</string>
+    <string name="label_project_desc">يحتوي المشروع على الكود الكامل لنظام بيض عيد الفصح، والذي يهدف إلى تنظيم بيض النظام والتوافق معه، وذلك للتأكد من أن معظم الأجهزة يمكنها تجربة إصدارات مختلفة من بيض عيد الفصح ولن تقوم بإجراء الكثير من التعديلات على كود بيض النظام. تستخدم بعض الإصدارات ميزات جديدة للنظام، ويمكن للإصدارات الأقل استخدام بعض الوظائف فقط.</string>
+    <string name="pref_title_icon_shape_override">شكل الأيقونة</string>
+    <string name="pref_title_language">اللغة</string>
+    <string name="pref_title_language_more">المزيد</string>
+    <string name="pref_title_theme">السمة</string>
+    <string name="pref_title_dynamic_color">اللون الديناميكي</string>
+    <string name="pref_title_icon_visual_effects">أيقونة المؤثرات البصرية</string>
+    <string name="summary_system_default">افتراضي</string>
+    <string name="summary_theme_dark_mode">داكن</string>
+    <string name="summary_theme_light_mode">ساطع</string>
+    <string name="summary_theme_amoled_mode">أموليد</string>
+    <string name="label_add_shortcut">اختصار</string>
+    <string name="label_donate">تبرع</string>
+    <string name="preference_on">تشغيل</string>
+    <string name="preference_off">إيقاف</string>
+    <string name="toast_shortcut_added">تم إضافة الاختصار إلى الشاشة الرئيسية.</string>
+    <string name="app_widget_description">هذه هي الساعة التناظرية لبيض عيد الفصح</string>
+    <string name="action_agree">موافق</string>
+    <string name="summary_browse_privacy_policy">اقرأ ووافق على سياسة الخصوصية الخاصة بنا للمتابعة.</string>
+    <string name="label_welcome">مرحبًا بك في كتالوج بيض عيد الفصح 🎉🎉🎉</string>
+    <string name="label_share">مشاركة</string>
+    <string name="label_search_hint">بحث…</string>
+    <string name="label_component_manager">مدير المكونات</string>
+    <string name="pref_more_settings">المزيد من الإعدادات</string>
+    <string name="pref_retain_recent_egg_tasks">احتفظ بمهام البيض الأخيرة</string>
+    <string name="pref_summary_retain_recent_egg_tasks">الاحتفاظ بمهام البيض على شاشة العناصر الأخيرة، بحد أقصى للاحتفاظ بـ5 (غير صالح لوضع النشاط المضمن)</string>
+    <string name="label_about">حول</string>
+    <string name="label_contribute">ساهم</string>
+    <string name="animator_disabled_alert_message">نظرًا لتعطيل الرسوم المتحركة للنظام، قد لا تعمل بعض الميزات بشكل صحيح. يُرجى الانتقال إلى \"خيارات المطور\" وتمكين خيار \"مقياس مدة الرسوم المتحركة\" لتنشيط الرسوم المتحركة.</string>
+    <string name="action_goto_settings">الانتقال إلى الإعدادات</string>
+</resources>
