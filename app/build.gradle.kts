@@ -105,7 +105,9 @@ android {
         // Disables dependency metadata when building APKs.
         includeInApk = false
     }
-
+    kotlinOptions {
+        freeCompilerArgs += "-Xcontext-receivers"
+    }
 }
 
 dependencies {
@@ -161,6 +163,7 @@ dependencies {
     implementation(project(":eggs:Honeycomb"))
     implementation(project(":eggs:Gingerbread"))
     implementation(project(":eggs:Base"))
+//    implementation(project(":compose-reordering"))
 
     implementation("market", libs.google.play.services)
     implementation("market", libs.google.play.review)
@@ -170,4 +173,5 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.bundles.android.test)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation(libs.androidx.foundation)
 }

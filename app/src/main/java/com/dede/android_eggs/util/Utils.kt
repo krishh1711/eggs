@@ -2,8 +2,12 @@
 
 package com.dede.android_eggs.util
 
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.platform.LocalConfiguration
 import java.util.Locale
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
@@ -76,3 +80,9 @@ fun Bundle?.isEquals(other: Any?): Boolean {
 
     return true
 }
+
+
+val isLandscape
+    @Composable
+    @ReadOnlyComposable
+    get() = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE

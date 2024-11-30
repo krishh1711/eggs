@@ -50,5 +50,6 @@ include(
 
     ":script:compose-material-icons-generator",
     ":script:emoji-svg-xml-convertor",
+//    ":compose-reordering", may be used in feature
 )
 rootProject.name = "Easter Eggs"
