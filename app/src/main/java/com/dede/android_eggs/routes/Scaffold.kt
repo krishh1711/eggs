@@ -10,9 +10,12 @@ import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.with
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,29 +32,22 @@ fun Scaffold(
     onTopIconButtonClick: () -> Unit,
     tabIndex: Int,
     onTabChanged: (Int) -> Unit,
-    tabColumnContent: @Composable ColumnScope.(@Composable (Int, String, Int) -> Unit) -> Unit,
+    tabColumnContent: @Composable RowScope.(@Composable (Int, String, Int) -> Unit) -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable AnimatedVisibilityScope.(Int) -> Unit
 ) {
     val (colorPalette) = LocalAppearance.current
 
-    Row(
+    Column(
         modifier = modifier
             .background(colorPalette.background0)
             .fillMaxSize()
     ) {
-
-        NavigationRail(
-//            modifier = Modifier.padding(16.dp),
-            topIconButtonId = topIconButtonId,
-            onTopIconButtonClick = onTopIconButtonClick,
-            tabIndex = tabIndex,
-            onTabIndexChanged = onTabChanged,
-            content = tabColumnContent
-        )
         AnimatedContent(
             targetState = tabIndex,
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier
+                .fillMaxHeight(0.85F)
+                .fillMaxWidth(),
             transitionSpec = {
                 val slideDirection = when (targetState > initialState) {
                     true -> AnimatedContentTransitionScope.SlideDirection.Up
@@ -69,7 +65,13 @@ fun Scaffold(
             },
             content = content, label = ""
         )
-
+        NavigationRail(
+            topIconButtonId = topIconButtonId,
+            onTopIconButtonClick = onTopIconButtonClick,
+            tabIndex = tabIndex,
+            onTabIndexChanged = onTabChanged,
+            content = tabColumnContent
+        )
     }
 }
 

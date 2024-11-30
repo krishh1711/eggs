@@ -54,7 +54,7 @@ fun NewSettingsScreen(easterEgg: List<BaseEasterEgg> = EasterEggHelp.previewEast
                 tabIndex = tabIndex,
                 onTabChanged = onTabChanged,
                 tabColumnContent = { Item ->
-                    Item(0, "Appearance", R.drawable.ic_wavy_line)
+                    Item(0, "Appearance", R.drawable.ic_pgyer_logo)
                     Item(1, "Player", R.drawable.ic_pgyer_logo)
                     Item(2, "Cache", R.drawable.better_together_hero)
                     Item(3, "Database", R.drawable.img_android_ai_tools_hero)

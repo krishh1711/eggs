@@ -5,23 +5,19 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -33,7 +29,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.dede.android_eggs.util.isLandscape
 
 //import com.dede.android_eggs.routes.getLocalPlayerAwareWindowInsets
 //import it.vfsfitvnm.vimusic.ui.styling.Dimensions
@@ -49,76 +44,49 @@ inline fun NavigationRail(
     noinline onTopIconButtonClick: () -> Unit,
     tabIndex: Int,
     crossinline onTabIndexChanged: (Int) -> Unit,
-    content: @Composable ColumnScope.(@Composable (Int, String, Int) -> Unit) -> Unit,
+    content: @Composable RowScope.(@Composable (Int, String, Int) -> Unit) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val (colorPalette, typography) = LocalAppearance.current
 
-    val isLandscape = isLandscape
+    val isLandscape = true//isLandscape
 
     val paddingValues = PaddingValues(0.dp)
 //    LocalPlayerAwareWindowInsets.current
 //        .only(WindowInsetsSides.Vertical + WindowInsetsSides.Start).asPaddingValues()
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Row(
         modifier = modifier
-            .verticalScroll(rememberScrollState())
             .padding(paddingValues)
     ) {
-        Box(
-            contentAlignment = Alignment.TopCenter,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .size(
-                    width = if (isLandscape) Dimensions.navigationRailWidthLandscape else Dimensions.navigationRailWidth,
-                    height = Dimensions.headerHeight
-                )
-        ) {
-            Image(
-                painter = painterResource(topIconButtonId),
-                contentDescription = null,
-                colorFilter = ColorFilter.tint(colorPalette.textSecondary),
-                modifier = Modifier
-                    .offset(
-                        x = if (isLandscape) 0.dp else Dimensions.navigationRailIconOffset,
-                        y = 48.dp
-                    )
-                    .clip(CircleShape)
-                    .clickable(onClick = onTopIconButtonClick)
-                    .padding(all = 12.dp)
-                    .size(22.dp)
-            )
-        }
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .width(if (isLandscape) Dimensions.navigationRailWidthLandscape else Dimensions.navigationRailWidth)
+                .horizontalScroll(rememberScrollState())
         ) {
             val transition = updateTransition(targetState = tabIndex, label = null)
 
             content { index, text, icon ->
                 val dothAlpha by transition.animateFloat(label = "") {
-                    if (it == index) 1f else 0f
+                    if (it == index) 1f else 1f
                 }
-
                 val textColor by transition.animateColor(label = "") {
-                    if (it == index) colorPalette.text else colorPalette.textDisabled
+                    if (it == index) colorPalette.accent else colorPalette.text
                 }
 
                 val iconContent: @Composable () -> Unit = {
                     Image(
                         painter = painterResource(icon),
                         contentDescription = null,
-                        colorFilter = ColorFilter.tint(colorPalette.text),
+                        colorFilter = ColorFilter.tint(textColor),
                         modifier = Modifier
-                            .vertical(enabled = !isLandscape)
+//                            .vertical(enabled = !isLandscape)
                             .graphicsLayer {
                                 alpha = dothAlpha
                                 translationX = (1f - dothAlpha) * -48.dp.toPx()
                                 rotationZ = if (isLandscape) 0f else -90f
                             }
-                            .size(Dimensions.navigationRailIconOffset * 2)
+                            .size(Dimensions.navigationRailIconOffset * 4)
                     )
                 }
 
@@ -136,28 +104,39 @@ inline fun NavigationRail(
                 val contentModifier = Modifier
                     .clip(RoundedCornerShape(24.dp))
                     .clickable(onClick = { onTabIndexChanged(index) })
-
-                if (isLandscape) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = contentModifier
-                            .padding(vertical = 8.dp)
-                    ) {
-                        iconContent()
-                        textContent()
-                    }
-                } else {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = contentModifier
-                            .padding(horizontal = 8.dp)
-                    ) {
-                        iconContent()
-                        textContent()
-                    }
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = contentModifier
+                        .padding(vertical = 8.dp)
+                ) {
+                    iconContent()
+                    textContent()
                 }
             }
         }
+//        Box(
+//            contentAlignment = Alignment.TopCenter,
+//            modifier = Modifier
+//                .size(
+//                    width = if (isLandscape) Dimensions.navigationRailWidthLandscape else Dimensions.navigationRailWidth,
+//                    height = Dimensions.headerHeight
+//                )
+//        ) {
+//            Image(
+//                painter = painterResource(topIconButtonId),
+//                contentDescription = null,
+//                colorFilter = ColorFilter.tint(colorPalette.textSecondary),
+//                modifier = Modifier
+//                    .offset(
+//                        x = if (isLandscape) 0.dp else Dimensions.navigationRailIconOffset,
+//                        y = 48.dp
+//                    )
+//                    .clip(CircleShape)
+//                    .clickable(onClick = onTopIconButtonClick)
+//                    .padding(all = 12.dp)
+//                    .size(22.dp)
+//            )
+//        }
     }
 }
 
