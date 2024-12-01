@@ -11,18 +11,17 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.with
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.dp
 import com.dede.android_eggs.routes.styling.LocalAppearance
 import com.dede.android_eggs.routes.styling.NavigationRail
+import com.dede.android_eggs.util.isLandscape
 
 
 @ExperimentalAnimationApi
@@ -32,22 +31,23 @@ fun Scaffold(
     onTopIconButtonClick: () -> Unit,
     tabIndex: Int,
     onTabChanged: (Int) -> Unit,
-    tabColumnContent: @Composable RowScope.(@Composable (Int, String, Int) -> Unit) -> Unit,
+    tabColumnContent: @Composable (@Composable (Int, String, Int) -> Unit) -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable AnimatedVisibilityScope.(Int) -> Unit
 ) {
     val (colorPalette) = LocalAppearance.current
+val modifierHeight:Modifier=if(isLandscape){
+    Modifier.fillMaxHeight(0.88F)
+        .fillMaxWidth()
 
-    Column(
-        modifier = modifier
-            .background(colorPalette.background0)
-            .fillMaxSize()
-    ) {
+}else {
+    Modifier.fillMaxWidth(0.88F)
+        .fillMaxHeight()
+}
+    val screenContent: @Composable () -> Unit = {
         AnimatedContent(
             targetState = tabIndex,
-            modifier = Modifier
-                .fillMaxHeight(0.85F)
-                .fillMaxWidth(),
+            modifier = modifierHeight,
             transitionSpec = {
                 val slideDirection = when (targetState > initialState) {
                     true -> AnimatedContentTransitionScope.SlideDirection.Up
@@ -65,14 +65,41 @@ fun Scaffold(
             },
             content = content, label = ""
         )
+
+    }
+
+
+    val navigationContent: @Composable () -> Unit = {
         NavigationRail(
             topIconButtonId = topIconButtonId,
+            modifier = Modifier.fillMaxHeight(),
             onTopIconButtonClick = onTopIconButtonClick,
             tabIndex = tabIndex,
             onTabIndexChanged = onTabChanged,
-            content = tabColumnContent
+            content = tabColumnContent,
         )
     }
+
+    if (isLandscape) {
+        Column(
+            modifier = modifier
+                .background(colorPalette.background0)
+                .fillMaxSize()
+        ) {
+            screenContent()
+            navigationContent()
+        }
+    } else {
+        Row(
+            modifier = modifier
+                .background(colorPalette.background0)
+                .fillMaxSize()
+        ) {
+            navigationContent()
+            screenContent()
+        }
+    }
+
 }
 
 

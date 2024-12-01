@@ -26,7 +26,7 @@ val settingsRoute = Route0("settingsRoute")
 @ExperimentalFoundationApi
 @Composable
 inline fun RouteHandlerScope.globalRoutes() {
-    settingsRoute()
+//    settingsRoute()
 
 //    artistRoute { browseId ->
 //        PagerSettingsScreen(

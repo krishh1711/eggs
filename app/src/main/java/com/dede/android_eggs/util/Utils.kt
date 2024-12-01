@@ -85,4 +85,17 @@ fun Bundle?.isEquals(other: Any?): Boolean {
 val isLandscape
     @Composable
     @ReadOnlyComposable
-    get() = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    get() = LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT
+
+inline val isAtLeastAndroid6
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+
+inline val isAtLeastAndroid8
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+
+inline val isAtLeastAndroid12
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+
+inline val isAtLeastAndroid13
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+
